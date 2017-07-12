@@ -24,17 +24,26 @@ const notes = {
     'B4': 493.88
   }
 
+let delta_time ;
+let t1;
+let t2;
 
 class Key extends Component {
 
-  stopNote(){
+  stopNote(e){
+    t2 = new Date().getTime();
+    delta_time = t2 - t1;
+    console.log(delta_time + '*' +e.target.id)
+    const data = delta_time + '*' +e.target.id
     for (let key in synth.oscillators) {
       synth.oscillators[key].stop();
     }
+    this.props.writeNote(data,t1,t2);
+
   }
 
   playNote(e){
-
+    t1 = new Date().getTime();
     const pitch = notes[e.target.id];
     for (let key in synth.oscillators) {
       synth.oscillators[key] = synth.audioContext.createOscillator();
@@ -61,7 +70,7 @@ class Key extends Component {
     return(<div className={this.props.color}
             id={this.props.note}
             onMouseDown={this.playNote.bind(this)}
-            onMouseUp={this.stopNote}
+            onMouseUp={this.stopNote.bind(this)}
             >
           </div>)
   }
