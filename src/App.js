@@ -27,90 +27,57 @@ class App extends Component {
   }
 
   replayer(){
+    var cycle_duration = [100]
+    var numbers = ['C4', 400, 'C4',100];
 
+    (function theLoop (i,temp) {
+      setTimeout(function () {
 
-    const notes = {
-        'C4': '261',
-        'Db4': '277',
-        'D4': '293',
-        'Eb4': '311',
-        'E4': '329',
-        'F4': '349',
-        'Gb4': '369',
-        'G4': '392',
-        'Ab4': '415',
-        'A4': '440',
-        'Bb4': '466',
-        'B4': '493'
-      }
+        //if (i < numbers.length){
+        //console.log(numbers[i])
+        //}
 
 
 
-
-    for (let j=0 ; j < this.state.notes.length ; j++ ){
-      let audioContext = new AudioContext();
-      let synth = {
-        oscillators: {
-          osc1: {},
-          osc2: {},
-          bass: {}
+        if (temp){
+          temp = parseInt(temp)
+          temp += 10
+        }else{
+          temp = 10
         }
-      }
-      let readable;
-      let play_duartion;
-      let play_note;
-      let pitch;
 
-      if (!isNaN(this.state.notes[j])){
-        console.log('qq')
-        pitch = 900;
-        play_duartion = this.state.notes[j]
 
-      }else{
-        readable = this.state.notes[j]
-        play_duartion = readable.split('*')[0]
-        play_note = readable.split('*')[1]
-        pitch = notes[play_note];
-        console.log('el')
-      }
+        if (i++ < numbers.length) {
+            i--;
+            temp = parseInt(temp)
+            temp += 10
+            //console.log('temp')
+            //console.log(temp)
 
-      for (let key in synth.oscillators) {
-        synth.oscillators[key] = audioContext.createOscillator();
-        synth.oscillators[key].type = 'sawtooth';
-        synth.oscillators[key].frequency.value = pitch;
-        synth.oscillators[key].connect(audioContext.destination);
-        switch (key) {
-          case 'osc1':
-            synth.oscillators[key].detune.value = -15;
-            break;
-          case 'osc2':
-            synth.oscillators[key].detune.value = 15;
-            break;
-          case 'bass':
-            synth.oscillators[key].frequency.value = pitch;
-            synth.oscillators[key].type = 'square';
-            break;
+            //console.log('i')
+            //console.log(i)
+            if (isNaN(numbers[i])){
+              console.log('nan')
+              var audio = new Audio(require('./a48.mp3'))
+              audio.load()
+              audio.play()
+              i++;
+            }
+
+            if ( numbers[i] < parseInt(temp) ){
+              i++
+              temp = 0;
+              var t = new Date().getTime()
+              console.log('bing' + "==> " + t)
+
+
+            }
+
+            theLoop(i,temp);
         }
-        synth.oscillators[key].start();
-      }
 
-      setTimeout(() => {
-        for (let key in synth.oscillators) {
-          synth.oscillators[key].stop();
-
-        }
-        synth = {
-          oscillators: {
-            osc1: {},
-            osc2: {},
-            bass: {}
-          }
-        }
-      }, parseInt(play_duartion) );
-
-
-
-    }
+      }, cycle_duration[0]);
+    })(0);
   }
 
   componentDidUpdate(){
