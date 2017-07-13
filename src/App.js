@@ -27,6 +27,17 @@ list-style-type: none;
 position: relative;
 `
 
+const Button = styled.button`
+  width : 100px;
+  height : 50px;
+  border-radius: 3px;
+  padding: 0.25em 1em;
+  margin: 0 1em;
+  background: transparent;
+  color: palevioletred;
+  border: 2px solid palevioletred;
+`
+
 
 
 
@@ -229,7 +240,7 @@ class App extends Component {
         </StyledPianoDiv>
         <br/>
         <textarea name="readable" rows="14" cols="10" wrap="soft" maxlength="40" style={{overFlow:'hidden' , resize:'none' , width : '550px'}} value={this.state.notes}></textarea><br/>
-        <button  type="text" name="readable" onClick= {this.replayer.bind(this)} >Replay</button>
+        <Button  type="text" name="readable" onClick= {this.replayer.bind(this)} >Replay</Button>
       </div>
     );
   }
