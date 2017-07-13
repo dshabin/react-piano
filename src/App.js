@@ -79,7 +79,8 @@ class App extends Component {
               i++
               temp = 0;
               var t = new Date().getTime();
-              console.log('bing' + "==> " + t)
+              console.log('bing   ==> ')
+              console.log(t)
             }
             console.log(i);
             console.log(temp)
