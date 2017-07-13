@@ -44,18 +44,18 @@ class App extends Component {
 
   replayer(){
     const notes = {
-      'C' : 'a48.mp3',
+      'C' : 'a49.mp3',
       'C#': 'b49.mp3',
-      'D' : 'a49.mp3',
+      'D' : 'a50.mp3',
       'D#': 'b50.mp3',
-      'E' : 'a50.mp3',
-      'F' : 'a51.mp3',
+      'E' : 'a51.mp3',
+      'F' : 'a52.mp3',
       'F#': 'b52.mp3',
-      'G' : 'a52.mp3',
+      'G' : 'a53.mp3',
       'G#': 'b53.mp3',
-      'A' : 'a53.mp3',
+      'A' : 'a54.mp3',
       'A#': 'b54.mp3',
-      'B' : 'a54.mp3',
+      'B' : 'a55.mp3',
     };
     var cycle_duration = [10]
     var numbers = this.state.notes;
