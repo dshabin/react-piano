@@ -1,5 +1,50 @@
 import React, { Component } from 'react';
-import './a48.mp3'
+import styled from 'styled-components'
+
+const StyledDiv = styled.div`
+width:100%;
+height:100%;
+float:left;
+box-shadow:0 1px 1px rgba(0, 0, 0, .5);
+position:relative;
+z-index:1;
+background:#f5f5f5;
+&nbsp;:active {
+    box-shadow:-1px 0 15px rgba(0, 0, 0, .7) inset;
+}
+&nbsp;:hover {
+    box-shadow:-1px 0 15px rgba(0, 0, 0, .7) inset;
+}
+`
+
+/*
+.white:active {
+  box-shadow:-1px 0 15px rgba(0, 0, 0, .7) inset;
+}
+*/
+const StyledDivBlack = styled.div`
+position: absolute;
+z-index: 2;
+width: 70%;
+height: 120px;
+background: #000;
+right: -35%;
+box-shadow: 1px 0 #111, 0 2px 0 #111, 0 3px 0 #333, 0 4px 0 #333, 0 5px 0 #333, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
+
+&nbsp;:hover {
+    box-shadow: 1px 0 #777, 0 2px 0 #777, 0 3px 0 #666, 0 4px 0 #555;
+}
+
+&nbsp;:active {
+    box-shadow: 1px 0 #777, 0 2px 0 #777, 0 3px 0 #666, 0 4px 0 #555;
+}
+`
+/*
+.black:active{
+  box-shadow: 1px 0 #777, 0 2px 0 #777, 0 3px 0 #666, 0 4px 0 #555;
+}
+*/
+
 
 let t1;
 let t2;
@@ -40,12 +85,23 @@ class Key extends Component {
   }
 
   render(){
-    return(<div className={this.props.color}
-            id={this.props.note}
-            onMouseDown={this.playNote.bind(this)}
-            onMouseUp={this.stopNote.bind(this)}
-            >
-          </div>)
+    if (this.props.color === 'white'){
+      return(<StyledDiv
+              id={this.props.note}
+              onMouseDown={this.playNote.bind(this)}
+              onMouseUp={this.stopNote.bind(this)}
+              >
+            </StyledDiv>)
+
+    }else{
+      return(<StyledDivBlack
+              id={this.props.note}
+              onMouseDown={this.playNote.bind(this)}
+              onMouseUp={this.stopNote.bind(this)}
+              >
+            </StyledDivBlack>)
+    }
+
   }
 }
 

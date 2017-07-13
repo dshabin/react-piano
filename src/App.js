@@ -1,16 +1,33 @@
 import React, { Component } from 'react';
 import './App.css';
 import Key from './Key'
+import styled from 'styled-components'
 
 
-var pianoStyle = {
-  width: "50%",
-  height: 300,
-  margin: "auto",
-  borderRadius: "20px 20px 0 0",
-  overflow: "hidden",
-  background: "linear-gradient(#1e1d1d, #000)"
-};
+const StyledPianoDiv = styled.div`
+width: 50% ;
+height: 300 ;
+margin: auto ;
+overflow: hidden ;
+background: linear-gradient(#1e1d1d, #000) ;
+`
+
+const StyledPianoContainerDiv = styled.div`
+width: 95%;
+height: 230px;
+background: #fff;
+margin: 60px auto 0 auto;
+
+`
+const StyledLi = styled.li`
+width: 14.28%;
+height: 100%;
+float: left;
+list-style-type: none;
+position: relative;
+`
+
+
 
 
 class App extends Component {
@@ -75,7 +92,7 @@ class App extends Component {
               audio.play()
               i++;
             }
-            if ( numbers[i] < parseInt(temp,10)/2  ){
+            if ( numbers[i] < parseInt(temp,10)/2 || i === 0 ){
               i++
               temp = 0;
               var t = new Date().getTime();
@@ -97,14 +114,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div style={pianoStyle}>
-          <div id="piano-container">
-            <li>
+        <StyledPianoDiv>
+          <StyledPianoContainerDiv>
+            <StyledLi>
               <Key color="white" note="C" writeNote={(data,t1,t2)=>{
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
           }} />
@@ -112,20 +128,16 @@ class App extends Component {
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
 
           }}/>
-            </li>
-            <li>
+            </StyledLi>
+            <StyledLi>
               <Key color="white" note="D" writeNote={(data,t1,t2)=>{
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
 
@@ -134,31 +146,26 @@ class App extends Component {
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
 
           }}/>
-            </li>
-            <li>
+            </StyledLi>
+            <StyledLi>
               <Key color="white" note="E" writeNote={(data,t1,t2)=>{
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
 
           }}/>
-            </li>
-            <li>
+            </StyledLi>
+            <StyledLi>
               <Key color="white" note="F" writeNote={(data,t1,t2)=>{
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
 
@@ -167,19 +174,16 @@ class App extends Component {
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
 
           }}/>
-            </li>
-            <li>
+            </StyledLi>
+            <StyledLi>
               <Key color="white" note="G" writeNote={(data,t1,t2)=>{
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
 
@@ -188,20 +192,16 @@ class App extends Component {
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
 
           }}/>
-            </li>
-            <li>
+            </StyledLi>
+            <StyledLi>
               <Key color="white" note="A" writeNote={(data,t1,t2)=>{
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
 
@@ -210,27 +210,26 @@ class App extends Component {
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
 
           }}/>
-            </li>
-            <li>
+            </StyledLi>
+            <StyledLi>
               <Key color="white" note="B" writeNote={(data,t1,t2)=>{
                 const {notes} = this.state;
                 notes.push(t1 - this.state.last_note_end_timestamp);
                 notes.push(data);
-
                 this.setState({notes});
                 this.setState({last_note_end_timestamp : t2 , last_note_start_timestamp : t1 })
 
           }}/>
-            </li>
-          </div>
-        </div>
-        <input style={{width : '300px' , height :'300px'}} type="text" name="readable" value={this.state.notes}/>
-        <button  type="text" name="readable" onClick= {this.replayer.bind(this)} >Play</button>
+            </StyledLi>
+          </StyledPianoContainerDiv>
+        </StyledPianoDiv>
+        <br/>
+        <textarea name="readable" rows="14" cols="10" wrap="soft" maxlength="40" style={{overFlow:'hidden' , resize:'none' , width : '550px'}} value={this.state.notes}></textarea><br/>
+        <button  type="text" name="readable" onClick= {this.replayer.bind(this)} >Replay</button>
       </div>
     );
   }
