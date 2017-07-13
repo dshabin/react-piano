@@ -27,8 +27,8 @@ class App extends Component {
   }
 
   replayer(){
-    var cycle_duration = [100]
-    var numbers = ['C4', 400, 'C4',100];
+    var cycle_duration = [10]
+    var numbers = this.state.notes;
 
     (function theLoop (i,temp) {
       setTimeout(function () {
@@ -64,15 +64,14 @@ class App extends Component {
               i++;
             }
 
-            if ( numbers[i] < parseInt(temp) ){
+            if ( numbers[i] < parseInt(temp)/2  ){
               i++
               temp = 0;
               var t = new Date().getTime()
               console.log('bing' + "==> " + t)
-
-
             }
-
+            console.log(i);
+            console.log(temp)
             theLoop(i,temp);
         }
 
