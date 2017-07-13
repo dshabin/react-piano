@@ -57,8 +57,8 @@ class App extends Component {
       'A#': 'b54.mp3',
       'B' : 'a55.mp3',
     };
-    var cycle_duration = [10]
-    var numbers = this.state.notes;
+    const cycle_duration = [10]
+    const numbers = this.state.notes;
 
     (function theLoop (i,temp) {
       setTimeout(function () {
@@ -87,7 +87,7 @@ class App extends Component {
             //console.log(i)
             if (isNaN(numbers[i])){
               console.log('nan')
-              var audio = new Audio(require('./'+ notes[numbers[i]] ))
+              const audio = new Audio(require('./'+ notes[numbers[i]] ))
               audio.load()
               audio.play()
               i++;
@@ -95,7 +95,7 @@ class App extends Component {
             if ( numbers[i] < parseInt(temp,10)/2 || i === 0 ){
               i++
               temp = 0;
-              var t = new Date().getTime();
+              const t = new Date().getTime();
               console.log('bing   ==> ')
               console.log(t)
             }
