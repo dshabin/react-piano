@@ -1,17 +1,6 @@
 import React, { Component } from 'react';
 import './a48.mp3'
 
-let synth = {
-  audioContext:  new AudioContext(),
-  oscillators: {
-    osc1: {},
-    osc2: {},
-    bass: {}
-  }
-}
-
-
-let delta_time ;
 let t1;
 let t2;
 
@@ -19,26 +8,34 @@ class Key extends Component {
 
   stopNote(e){
     t2 = new Date().getTime();
-    delta_time = t2 - t1;
     const data = e.target.id
     this.props.writeNote(data,t1,t2);
 
   }
 
   playNote(e){
+
+    const notes = {
+      'C' : 'a48.mp3',
+      'C#': 'b49.mp3',
+      'D' : 'a49.mp3',
+      'D#': 'b50.mp3',
+      'E' : 'a50.mp3',
+      'F' : 'a51.mp3',
+      'F#': 'b52.mp3',
+      'G' : 'a52.mp3',
+      'G#': 'b53.mp3',
+      'A' : 'a53.mp3',
+      'A#': 'b54.mp3',
+      'B' : 'a54.mp3',
+    };
+
     t1 = new Date().getTime();
     const id = e.target.id;
-    if (id == 'C4'){
-      var audio = new Audio(require('./a48.mp3'))
-      console.log('if')
-    }
-    else{
-      console.log('el')
-      var audio = new Audio(require('./a53.mp3'))
-    }
-    audio.load()
+    console.log(notes[id]);
+    const audio = new Audio(require('./'+ notes[id] ));
+    audio.load();
     audio.play();
-
 
   }
 
